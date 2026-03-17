@@ -92,12 +92,21 @@ export const NPSimpleForm: React.FC<NPSimpleFormProps> = ({
 
                       {!isReadOnly && (
                           <Col xs="auto">
-                            <NPSubmitButton
-                                text={actualEditMode ? 'Сохранить' : 'Изменить'}
-                                type={actualEditMode ? 'submit' : 'button'}
-                                onClick={!actualEditMode ? handleEditClick : undefined}
-                                isSubmitting={formik.isSubmitting}
-                            />
+                            {actualEditMode ? (
+                                <NPSubmitButton
+                                    key="save"
+                                    text="Сохранить"
+                                    type="submit"
+                                    isSubmitting={formik.isSubmitting}
+                                />
+                            ) : (
+                                <NPSubmitButton
+                                    key="edit"
+                                    text="Изменить"
+                                    type="button"
+                                    onClick={handleEditClick}
+                                />
+                            )}
                           </Col>
                       )}
                     </Row>
